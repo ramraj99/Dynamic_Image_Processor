@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic_Image_processor</title>
+<style>
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+   width: 60%;
+  left: 0;
+  background-color: #111;
+  border-style: outset;
+}
+
+.right {
+   width: 40%;
+  right: 0;
+  background-color: red;
+  border-style: inset;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+#rcorners2 {
+    border-radius: 25px;
+    background: #FF8900;
+    border: 2px solid #FFE334;
+    padding: 20px;
+    width: 475px;
+    height: 550px;
+}
+
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="split left">
+  <div class="centered">
+  <p id="rcorners3" style=" border: 2px solid lime ;border-radius: 0px;background: #F7F7F7;background-position: left top;background-repeat: repeat;padding: 20px;width: 300px;height: 100px;box-shadow: 10px 10px 5px grey;"></p>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+<h1 style="text-align:center; margin: 0; width: 500px; height: 60px;"><font color = #061766 face = Algerian><u><i>Control_Panel</u></i></font></h1>
+<div id="rcorners2"><div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Roundness</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo"></span></p></font>
+</div>
+<div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Shadow</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange1">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo1"></span></p></font>
+</div>
+<div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Border</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo2"></span></p></font>
+</div>
+<div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Height</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo3"></span></p></font>
+  <div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Width</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange4">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo4"></span></p></font>
+</div>
+<div class="slidecontainer">
+  <p  style="text-align:center; margin: 0; "><font color = red face = Algerian>Blur</font></p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange5">
+  <p><font color = #06133D face = Algerian>Value:<span id="demo5"></span></p></font>
+</div>
+</div>
+</div>
+
+  </div>
+</div>
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  x=this.value+"px"
+  document.getElementById("rcorners3").style. borderRadius= x;
+}
+var slider1 = document.getElementById("myRange1");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value;
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+  x=this.value+"px "+this.value+"px 5px grey";
+  document.getElementById("rcorners3").style.boxShadow=x;
+}
+var slider2 = document.getElementById("myRange2");
+var output2 = document.getElementById("demo2");
+output2.innerHTML = slider2.value;
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+  x=this.value+"px solid lime";
+  document.getElementById("rcorners3").style. border=x;
+}
+var slider3 = document.getElementById("myRange3");
+var output3 = document.getElementById("demo3");
+output3.innerHTML = slider3.value;
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
+  x=this.value+"px";
+  document.getElementById("rcorners3").style. height=x;
+}
+var slider4 = document.getElementById("myRange4");
+var output4 = document.getElementById("demo4");
+output4.innerHTML = slider4.value;
+slider4.oninput = function() {
+  output4.innerHTML = this.value;
+  x=this.value+"px";
+  document.getElementById("rcorners3").style. width=x;
+}
+var slider5 = document.getElementById("myRange5");
+var output5 = document.getElementById("demo5");
+output5.innerHTML = slider5.value;
+slider5.oninput = function() {
+  output5.innerHTML = this.value;
+   x="10px 10px "+this.value+"px grey";
+  document.getElementById("rcorners3").style.boxShadow=x;
+}
+</script>
+</body>
+</html>
